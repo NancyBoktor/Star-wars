@@ -1,24 +1,26 @@
-import Button from "./Components/Button";
+import Character from "./Components/Character";
+import getCharacterbyId from "./services/getInfo";
+import data from "./services/hardCodedData";
 import "./App.css";
+import { Fragment } from "react";
 
 function App() {
-  const names = [
-    "Luke Skywalker",
-    "C-3PO",
-    "R2-D2",
-    "Darth Vader",
-    "Leia Organa",
-    "Owen Lars",
-    "Beru Whitesun lars",
-    "R5-D4",
-    "Biggs Darklighter",
-    "Obi-Wan Kenobi",
-  ];
-
+  const onClick = async (id) => {
+    const response = await getCharacterbyId(id);
+    console.log(response);
+  };
   return (
     <div className="App">
-      {names.map((n) => {
-        return <Button name={n} key={names.indexOf(n)} />;
+      {data.map((c) => {
+        return (
+          <Character
+            key={c.id}
+            id={c.id}
+            imgPath={c.img}
+            onClick={() => onClick(c.id)}
+            name={c.name}
+          />
+        );
       })}
     </div>
   );
