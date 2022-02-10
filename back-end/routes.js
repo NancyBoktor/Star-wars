@@ -1,19 +1,29 @@
 const express = require("express");
 const router = express.Router();
-const axios = require("axios");
+const getHomePlanet = require("./controller/getHomePlanet");
+const getPeopleById = require("./controller/getPeopleById");
+const getFilms = require("./controller/getFilms");
+const getSpecies = require("./controller/getSpecies");
 
 router.get("/people/:id", async (req, res) => {
   const id = req.params.id;
-  console.log("id-", id);
+
   try {
-    const data = await axios({
-      method: "get",
-      url: `https://swapi.dev/api/people/${id}`,
-    });
-    const response = await data.data;
-    res.json(response);
+    const CharacterInfo = await getPeopleById(id);
+    console.log(CharacterInfo);
+    const homeplanetdata = await getHomePlanet(CharacterInfo.homeworld);
+    const speciesData = await getSpecies(CharacterInfo.species);
+    const filmsData = await getFilms(CharacterInfo);
+    const responseData = {
+      ...CharacterInfo,
+      homeworld: homeplanetdata,
+      films: filmsData,
+      species: speciesData,
+    };
+    console.log("Response", responseData);
+    res.json(responseData);
   } catch (error) {
-    res.send(`Error Message ${error}`);
+    res.status(404).send(`Error Message ${error}`);
   }
 });
 

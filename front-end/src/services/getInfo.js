@@ -10,4 +10,14 @@ const getCharacterbyId = async (id) => {
     console.log(error);
   }
 };
+
+const getHomePlanet = async (url, id) => {
+  try {
+    return await axios({
+      method: "get",
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
 export default getCharacterbyId;
