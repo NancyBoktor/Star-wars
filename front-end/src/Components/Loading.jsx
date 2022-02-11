@@ -16,7 +16,7 @@ export default function Loading() {
         justifyContent: "center",
       }}
     >
-      <CircularProgress />
+      <CircularProgress style={{ color: "white" }} />
     </div>
   );
 }
