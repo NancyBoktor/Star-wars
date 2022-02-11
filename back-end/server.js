@@ -1,8 +1,9 @@
 const express = require("express");
-const app = express();
-const cors = require("cors");
-const port = 3001;
 const fetchData = require("./routes");
+const cors = require("cors");
+const app = express();
+const port = 3001;
+
 const corsOption = {
   origin: "http://localhost:3000",
   optionsSuccessStatus: 200,

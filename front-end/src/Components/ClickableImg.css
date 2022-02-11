@@ -1,4 +1,8 @@
 .img {
-  width: 100px;
-  height: 150px;
+  width: 130px;
+  height: 180px;
+  opacity: 1.5;
+  margin-bottom: 25px;
+  filter: drop-shadow(0 0 0.3cm rgb(121, 121, 190));
+  /* filter: drop-shadow(30px 10px 4px #4444dd); */
 }

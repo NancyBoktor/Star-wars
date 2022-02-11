@@ -1,8 +1,14 @@
 import "./ClickableImg.css";
 
-const ClickableImg = (props) => {
-  const { imgPath, name, onClick } = props;
-  console.log("imgPath", imgPath);
-  return <img src={imgPath} alt={name} onClick={onClick} className="img" />;
+const ClickableImg = ({ imgPath, name, onClick }) => {
+  return (
+    <img
+      src={imgPath}
+      alt={name}
+      onClick={onClick}
+      className="img"
+      loading="lazy"
+    />
+  );
 };
 export default ClickableImg;

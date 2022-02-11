@@ -1,0 +1,11 @@
+.characters-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 130px;
+  width: 60%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  margin: auto;
+}

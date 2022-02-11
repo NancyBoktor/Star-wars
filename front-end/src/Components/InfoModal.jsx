@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Typography from "@mui/material/Typography";
 import DropList from "./DropList";
-
+import "./InfoModal.css";
 const style = {
   position: "absolute",
   top: "50%",
@@ -14,11 +14,13 @@ const style = {
   border: "2px solid #000",
   boxShadow: 24,
   p: 4,
+  overflow: "scroll",
+  maxHeight: 500,
 };
 
 export default function InfoModal(props) {
   const { info, handleClose, open } = props;
-  console.log("mmmm", info);
+
   return (
     <div>
       <Modal
@@ -29,26 +31,35 @@ export default function InfoModal(props) {
       >
         <Box sx={style}>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Name : {info.name}
+            Name : {info.name} <br />
+            Height : {info.height} <br />
+            Mass : {info.mass} <br />
+            Hair Color : {info.hair_color} <br />
+            Skin Color : {info.skin_color} <br />
+            Gender : {info.eye_color} <br />
+            Birth Year : {info.birth_year} <br />
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Height : {info.height}
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Mass : {info.mass}
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Hair Color : {info.hair_color}
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Skin Color : {info.skin_color}
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Gender : {info.eye_color}
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Birth Year : {info.birth_year}
-          </Typography>
+
+          <div className="drop-list-modal">
+            {info.homeworld && (
+              <div className="list">
+                Home planet
+                <DropList data={info["homeworld"]} />
+              </div>
+            )}
+            {info.species && (
+              <div className="list">
+                Species
+                <DropList data={info["species"]} />
+              </div>
+            )}
+            {info.films && (
+              <div className="list">
+                Films
+                <DropList data={info["films"]} />
+              </div>
+            )}
+          </div>
         </Box>
       </Modal>
     </div>

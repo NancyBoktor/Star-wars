@@ -1,16 +1,15 @@
 const express = require("express");
+const getHomePlanet = require("./controller/homePlanet");
+const getPeopleById = require("./controller/people");
+const getFilms = require("./controller/films");
+const getSpecies = require("./controller/species");
 const router = express.Router();
-const getHomePlanet = require("./controller/getHomePlanet");
-const getPeopleById = require("./controller/getPeopleById");
-const getFilms = require("./controller/getFilms");
-const getSpecies = require("./controller/getSpecies");
 
 router.get("/people/:id", async (req, res) => {
   const id = req.params.id;
 
   try {
     const CharacterInfo = await getPeopleById(id);
-    console.log(CharacterInfo);
     const homeplanetdata = await getHomePlanet(CharacterInfo.homeworld);
     const speciesData = await getSpecies(CharacterInfo.species);
     const filmsData = await getFilms(CharacterInfo);
@@ -20,7 +19,6 @@ router.get("/people/:id", async (req, res) => {
       films: filmsData,
       species: speciesData,
     };
-    console.log("Response", responseData);
     res.json(responseData);
   } catch (error) {
     res.status(404).send(`Error Message ${error}`);

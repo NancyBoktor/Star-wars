@@ -1,5 +1,8 @@
 const axios = require("axios");
 const getPeopleById = async (id) => {
+  if (!id) {
+    throw "Missing id!!!";
+  }
   try {
     const data = await axios({
       method: "get",
@@ -19,7 +22,7 @@ const getPeopleById = async (id) => {
       films: response.films,
     };
   } catch (error) {
-    console.log(error);
+    throw "wrong id !!";
   }
 };
 module.exports = getPeopleById;

@@ -1,0 +1,10 @@
+.list {
+  display: flex;
+  flex-direction: row;
+}
+.drop-list-modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+}

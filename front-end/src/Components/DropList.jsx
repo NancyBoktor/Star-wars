@@ -1,23 +1,47 @@
-// import * as React from "react";
-// import TreeView from "@mui/lab/TreeView";
-// import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-// import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-// import TreeItem from "@mui/lab/TreeItem";
+import { useState } from "react";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+/* ------ Data props is supporting object && arr of object ------ */
+export default function DropList({ data }) {
+  /* ------ handle open && close DropList Component ------ */
+  const [openDropList, setOpenDropList] = useState(false);
+  const handelRenderInfo = () => {
+    !openDropList ? setOpenDropList(true) : setOpenDropList(false);
+  };
 
-// export default function DropList(props) {
-//   const { data } = props;
-//   return (
-//     <TreeView
-//       aria-label="file system navigator"
-//       defaultCollapseIcon={<ExpandMoreIcon />}
-//       defaultExpandIcon={<ChevronRightIcon />}
-//       sx={{ height: 240, flexGrow: 1, maxWidth: 400, overflowY: "auto" }}
-//     >
-//       <TreeItem nodeId="1" label="Applications">
-//         {data.map((d) => {
-//           return <pr>{d}</pr>;
-//         })}
-//       </TreeItem>
-//     </TreeView>
-//   );
-// }
+  /* ------ function Component ------ */
+  const RenderObjectInfo = ({ d, data }) => {
+    let objectKeys = Object.keys(data);
+    return objectKeys.map((objectKey) => {
+      return (
+        <div key={objectKey.id}>{`${objectKey} : ${
+          !d ? data[objectKey] : d[objectKey]
+        }`}</div>
+      );
+    });
+  };
+
+  return (
+    <div className="drop-list">
+      <div>
+        <ArrowForwardIosIcon
+          onClick={handelRenderInfo}
+          style={{ fontSize: 12, marginLeft: 5, cursor: "pointer" }}
+        />
+      </div>
+      <div className="drop-list-info">
+        {openDropList &&
+          (Array.isArray(data) ? (
+            data.map((d) => {
+              return (
+                <ul>
+                  <RenderObjectInfo d={d} data={d} />
+                </ul>
+              );
+            })
+          ) : (
+            <RenderObjectInfo data={data} />
+          ))}
+      </div>
+    </div>
+  );
+}

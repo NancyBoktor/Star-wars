@@ -11,7 +11,6 @@ const getSpecies = async (arr) => {
       })
     );
     const speciesPromise = await Promise.all(data);
-    //console.log("hhhhhhhhh", speciesPromise);
     const speciesDataArr = speciesPromise.map((s) => s.data);
     const speciesData = speciesDataArr.map((sD) => {
       return {
@@ -23,7 +22,7 @@ const getSpecies = async (arr) => {
     });
     return speciesData;
   } catch (error) {
-    console.log(error);
+    throw "Something went wrong !!";
   }
 };
 module.exports = getSpecies;

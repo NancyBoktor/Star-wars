@@ -1,7 +1,11 @@
 const axios = require("axios");
-const getFilms = async (response) => {
+
+const getFilms = async (arr) => {
+  if (arr.length === 0) {
+    return null;
+  }
   try {
-    const filmPromise = response.films.map((film) => axios.get(film));
+    const filmPromise = arr.films.map((film) => axios.get(film));
     const filmsData = await Promise.all(filmPromise);
     const films = filmsData.map((f) => f.data);
     const reqFilmsData = films.map((fD) => {
@@ -14,8 +18,7 @@ const getFilms = async (response) => {
     });
     return reqFilmsData;
   } catch (error) {
-    console.log(`Error Message ${error}`);
+    throw "Something went wrong !!";
   }
-  //console.log(reqFilmsData);
 };
 module.exports = getFilms;
