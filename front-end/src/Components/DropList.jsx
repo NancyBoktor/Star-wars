@@ -1,5 +1,7 @@
 import { useState } from "react";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+
 /* ------ Data props is supporting object && arr of object ------ */
 export default function DropList({ data }) {
   /* ------ handle open && close DropList Component ------ */
@@ -23,10 +25,11 @@ export default function DropList({ data }) {
   return (
     <div className="drop-list">
       <div>
-        <ArrowForwardIosIcon
-          onClick={handelRenderInfo}
-          style={{ fontSize: 12, marginLeft: 5, cursor: "pointer" }}
-        />
+        {openDropList ? (
+          <ExpandMoreIcon onClick={handelRenderInfo} />
+        ) : (
+          <ChevronRightIcon onClick={handelRenderInfo} />
+        )}
       </div>
       <div className="drop-list-info">
         {openDropList &&
