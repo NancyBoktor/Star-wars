@@ -26,6 +26,7 @@ function App() {
       alert("This ID is not exist !! ");
     } finally {
       setLoading(false);
+      setValue("");
     }
   };
   /* ----- Controll the Input Component ------*/

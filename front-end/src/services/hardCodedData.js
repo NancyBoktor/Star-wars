@@ -35,7 +35,7 @@ const data = [
   {
     id: 10,
     name: "Obi_Wan Kenobi",
-    img: "images/Obi_wan_kenobi.png",
+    img: "images/Obi_wan_Kenobi.PNG.png",
   },
 ];
 
