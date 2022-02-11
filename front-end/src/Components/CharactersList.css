@@ -2,8 +2,8 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 10px 125px;
-  width: 100%;
+  gap: 170px;
+  width: 60%;
   justify-content: center;
   align-items: center;
   margin-top: 50px;
