@@ -6,3 +6,8 @@
   filter: drop-shadow(0 0 0.3cm rgb(121, 121, 190));
   /* filter: drop-shadow(30px 10px 4px #4444dd); */
 }
+@media screen and (min-width: 560px) {
+  img {
+    width: 200px;
+  }
+}
